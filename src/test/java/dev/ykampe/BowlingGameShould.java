@@ -1,6 +1,7 @@
 package dev.ykampe;
 
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -23,9 +24,15 @@ class BowlingGameShould {
     @Mock
     BowlingGameFrameCalculator bowlingGameFrameCalculator;
 
+    BowlingGame bowlingGame;
+
+    @BeforeEach
+    public void setUp() {
+        bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
+    }
+
     @Test
     void splitIncomingStringIntoFrames() {
-        BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
         when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(List.of(new BowlingFrame()));
         bowlingGame.playGame(INPUT_STRING);
         Mockito.verify(bowlingGameStringSplitter).processGameString(INPUT_STRING);
@@ -34,7 +41,6 @@ class BowlingGameShould {
 
     @Test
     void calculateScoreForFrame() {
-        BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
         when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(List.of(new BowlingFrame()));
         bowlingGame.playGame(INPUT_STRING);
         verify(bowlingGameFrameCalculator).calculateFrameScore(any());
@@ -43,8 +49,6 @@ class BowlingGameShould {
 
     @Test
     void processAllFrames() {
-        BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
-
         List<BowlingFrame> listOfFrames = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
@@ -52,9 +56,7 @@ class BowlingGameShould {
         }
 
         when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(listOfFrames);
-
         bowlingGame.playGame(INPUT_STRING);
-
         verify(bowlingGameFrameCalculator, times(10)).calculateFrameScore(any());
     }
 
