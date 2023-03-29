@@ -2,9 +2,11 @@ package dev.ykampe;
 
 public class BowlingGame {
     private final BowlingGameStringSplitter bowlingGameStringSplitter;
+    private final BowlingGameFrameCalculator bowlingGameFrameCalculator;
 
     public BowlingGame(BowlingGameStringSplitter bowlingGameStringSplitter, BowlingGameFrameCalculator bowlingGameFrameCalculator) {
         this.bowlingGameStringSplitter = bowlingGameStringSplitter;
+        this.bowlingGameFrameCalculator = bowlingGameFrameCalculator;
     }
 
     public int score() {
@@ -13,5 +15,6 @@ public class BowlingGame {
 
     public void playGame(String inputString) {
         bowlingGameStringSplitter.processGameString(inputString);
+        bowlingGameFrameCalculator.calculateFrameScore(null);
     }
 }
