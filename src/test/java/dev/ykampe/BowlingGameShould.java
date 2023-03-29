@@ -7,6 +7,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -23,6 +26,7 @@ class BowlingGameShould {
     @Test
     void splitIncomingStringIntoFrames() {
         BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
+        when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(List.of(new BowlingFrame()));
         bowlingGame.playGame(INPUT_STRING);
         Mockito.verify(bowlingGameStringSplitter).processGameString(INPUT_STRING);
     }
@@ -31,11 +35,28 @@ class BowlingGameShould {
     @Test
     void calculateScoreForFrame() {
         BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
+        when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(List.of(new BowlingFrame()));
         bowlingGame.playGame(INPUT_STRING);
         verify(bowlingGameFrameCalculator).calculateFrameScore(any());
     }
 
 
+    @Test
+    void processAllFrames() {
+        BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
+
+        List<BowlingFrame> listOfFrames = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            listOfFrames.add(new BowlingFrame());
+        }
+
+        when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(listOfFrames);
+
+        bowlingGame.playGame(INPUT_STRING);
+
+        verify(bowlingGameFrameCalculator, times(10)).calculateFrameScore(any());
+    }
 
 
 }
