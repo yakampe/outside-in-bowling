@@ -25,4 +25,13 @@ class BowlingGamePipeStringSplitterTest {
 
         assertEquals(11, actual.size());
     }
+
+    @Test
+    void givenFrameIsStrikeShouldSetStrikeValue() {
+        BowlingGamePipeStringSplitter bowlingGamePipeStringSplitter = new BowlingGamePipeStringSplitter();
+
+        BowlingFrame actual = bowlingGamePipeStringSplitter.processGameString("X").get(0);
+
+        assertEquals(true, actual.isStrike());
+    }
 }
