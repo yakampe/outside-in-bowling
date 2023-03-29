@@ -3,7 +3,7 @@ package dev.ykampe;
 public class BowlingGame {
     private final BowlingGameStringSplitter bowlingGameStringSplitter;
 
-    public BowlingGame(BowlingGameStringSplitter bowlingGameStringSplitter) {
+    public BowlingGame(BowlingGameStringSplitter bowlingGameStringSplitter, BowlingGameFrameCalculator bowlingGameFrameCalculator) {
         this.bowlingGameStringSplitter = bowlingGameStringSplitter;
     }
 

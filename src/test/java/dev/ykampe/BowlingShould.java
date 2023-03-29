@@ -14,7 +14,8 @@ class BowlingShould {
 
         BowlingGamePipeStringSplitter bowlingGamePipeStringSplitter = new BowlingGamePipeStringSplitter();
 
-        BowlingGame bowlingGame = new BowlingGame(bowlingGamePipeStringSplitter);
+        BowlingGameFrameCalculator bowlingGameFrameCalculator = new BowlingGameFrameCalculator();
+        BowlingGame bowlingGame = new BowlingGame(bowlingGamePipeStringSplitter, bowlingGameFrameCalculator);
 
         //act
         bowlingGame.playGame(inputString);
