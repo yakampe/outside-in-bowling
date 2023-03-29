@@ -20,7 +20,7 @@ class BowlingGameShould {
 
     private final static String INPUT_STRING = "X|7/|9-|X|-8|8/|-6|X|X|X||81";
     @Mock
-    BowlingGameStringSplitter bowlingGameStringSplitter;
+    BowlingGamePipeStringSplitter bowlingGameStringSplitter;
 
     @Mock
     BowlingGameFrameCalculator bowlingGameFrameCalculator;

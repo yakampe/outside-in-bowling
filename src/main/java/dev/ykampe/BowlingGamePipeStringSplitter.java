@@ -2,8 +2,8 @@ package dev.ykampe;
 
 import java.util.List;
 
-public class BowlingGamePipeStringSplitter implements BowlingGameStringSplitter {
-    @Override
+public class BowlingGamePipeStringSplitter {
+
     public List<BowlingFrame> processGameString(String gameString) {
         return null;
     }

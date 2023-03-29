@@ -3,11 +3,11 @@ package dev.ykampe;
 import java.util.List;
 
 public class BowlingGame {
-    private final BowlingGameStringSplitter bowlingGameStringSplitter;
+    private final BowlingGamePipeStringSplitter bowlingGameStringSplitter;
     private final BowlingGameFrameCalculator bowlingGameFrameCalculator;
     private int score;
 
-    public BowlingGame(BowlingGameStringSplitter bowlingGameStringSplitter, BowlingGameFrameCalculator bowlingGameFrameCalculator) {
+    public BowlingGame(BowlingGamePipeStringSplitter bowlingGameStringSplitter, BowlingGameFrameCalculator bowlingGameFrameCalculator) {
         this.bowlingGameStringSplitter = bowlingGameStringSplitter;
         this.bowlingGameFrameCalculator = bowlingGameFrameCalculator;
     }
