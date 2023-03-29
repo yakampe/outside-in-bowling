@@ -8,11 +8,12 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class BowlingGameShould {
 
+    private final static String INPUT_STRING = "X|7/|9-|X|-8|8/|-6|X|X|X||81";
     @Mock
     BowlingGameStringSplitter bowlingGameStringSplitter;
 
@@ -22,19 +23,15 @@ class BowlingGameShould {
     @Test
     void splitIncomingStringIntoFrames() {
         BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
-
-        bowlingGame.playGame("X|7/|9-|X|-8|8/|-6|X|X|X||81");
-
-        Mockito.verify(bowlingGameStringSplitter).processGameString("X|7/|9-|X|-8|8/|-6|X|X|X||81");
+        bowlingGame.playGame(INPUT_STRING);
+        Mockito.verify(bowlingGameStringSplitter).processGameString(INPUT_STRING);
     }
 
 
     @Test
     void calculateScoreForFrame() {
         BowlingGame bowlingGame = new BowlingGame(bowlingGameStringSplitter, bowlingGameFrameCalculator);
-
-        bowlingGame.playGame("X|7/|9-|X|-8|8/|-6|X|X|X||81");
-
+        bowlingGame.playGame(INPUT_STRING);
         verify(bowlingGameFrameCalculator).calculateFrameScore(any());
     }
 
