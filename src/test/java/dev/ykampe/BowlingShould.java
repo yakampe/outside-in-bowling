@@ -11,7 +11,10 @@ class BowlingShould {
     void process_whole_game_and_return_correct_score() {
         //arrange
         String inputString = "X|7/|9-|X|-8|8/|-6|X|X|X||81";
-        BowlingGame bowlingGame = new BowlingGame();
+
+        BowlingGamePipeStringSplitter bowlingGamePipeStringSplitter = new BowlingGamePipeStringSplitter();
+
+        BowlingGame bowlingGame = new BowlingGame(bowlingGamePipeStringSplitter);
 
         //act
         bowlingGame.playGame(inputString);
