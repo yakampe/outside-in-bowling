@@ -1,5 +1,7 @@
 package dev.ykampe;
 
+import java.util.List;
+
 public class BowlingGame {
     private final BowlingGameStringSplitter bowlingGameStringSplitter;
     private final BowlingGameFrameCalculator bowlingGameFrameCalculator;
@@ -14,7 +16,10 @@ public class BowlingGame {
     }
 
     public void playGame(String inputString) {
-        bowlingGameStringSplitter.processGameString(inputString);
-        bowlingGameFrameCalculator.calculateFrameScore(null);
+        List<BowlingFrame> bowlingFrames = bowlingGameStringSplitter.processGameString(inputString);
+
+        bowlingFrames.forEach(bowlingFrame -> {
+            bowlingGameFrameCalculator.calculateFrameScore(bowlingFrame);
+        });
     }
 }
