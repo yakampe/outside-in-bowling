@@ -12,7 +12,7 @@ class BowlingGamePipeStringSplitterTest {
     void givenTenFrames__ShouldReturnAListOfTenFrameObjects() {
         BowlingGamePipeStringSplitter bowlingGamePipeStringSplitter = new BowlingGamePipeStringSplitter();
 
-        List<BowlingFrame> actual = bowlingGamePipeStringSplitter.processGameString("X|7/|9-|X|-8|8/|-6|X|X|X||81");
+        List<BowlingFrame> actual = bowlingGamePipeStringSplitter.processGameString("X|7/|9-|X|-8|8/|-6|X|X|9");
 
         assertEquals(10, actual.size());
     }
