@@ -16,4 +16,14 @@ class BowlingGamePipeStringSplitterTest {
 
         assertEquals(10, actual.size());
     }
+
+    @Test
+    void givenHasBonusBalls__ShouldIncludeAsPartOfTheLastFrame() {
+        BowlingGamePipeStringSplitter bowlingGamePipeStringSplitter = new BowlingGamePipeStringSplitter();
+
+        List<BowlingFrame> actual = bowlingGamePipeStringSplitter.processGameString("X|7/|9-|X|-8|8/|-6|X|X|X||81");
+
+        assertEquals(10, actual.size());
+        assertEquals("X81",actual.get(9).rolls());
+    }
 }
