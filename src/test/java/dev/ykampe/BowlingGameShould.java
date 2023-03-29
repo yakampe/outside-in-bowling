@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -58,6 +59,21 @@ class BowlingGameShould {
         when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(listOfFrames);
         bowlingGame.playGame(INPUT_STRING);
         verify(bowlingGameFrameCalculator, times(10)).calculateFrameScore(any());
+    }
+
+    @Test
+    void calculateTheSumOfAllFrameScores() {
+        List<BowlingFrame> listOfFrames = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            listOfFrames.add(new BowlingFrame());
+        }
+
+        when(bowlingGameStringSplitter.processGameString(anyString())).thenReturn(listOfFrames);
+        when(bowlingGameFrameCalculator.calculateFrameScore(any())).thenReturn(10);
+
+        bowlingGame.playGame(INPUT_STRING);
+        assertEquals(100, bowlingGame.score());
     }
 
 
