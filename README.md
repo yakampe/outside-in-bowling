@@ -1,3 +1,6 @@
+Input: a string (described below) representing a bowling game
+Ouput: an integer score
+
 Rules
 Each game (or "line") of bowling includes ten turns (or "frames") for the bowler.
 
